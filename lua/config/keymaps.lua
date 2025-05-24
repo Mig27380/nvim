@@ -1,6 +1,6 @@
 -- Ctrl + Enter to insert line
 vim.keymap.set("n", "<C-CR>", "o<Esc>$")
-vim.keymap.set("n", "<C-S-CR>", "O<Esc>$")
+vim.keymap.set("n", "<A-CR>", "O<Esc>$")
 
 -- Disable arrow keys
 vim.keymap.set("n", "<Down>", "<Nop>")
