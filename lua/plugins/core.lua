@@ -1,45 +1,10 @@
 return {
+
   { -- THEME
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
       vim.cmd.colorscheme "gruvbox"
-    end
-  },
-
-  { -- NEOTREE
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    lazy = false,
-    config = function()
-      require("neo-tree").setup({
-       window = {
-          mappings = {
-            ["h"] = "close_node",
-            ["l"] = "open",
-          }
-        }
-      })
-    end
-  },
-
-  { -- LUALINE
-    "nvim-lualine/lualine.nvim",
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require("lualine").setup({
-        extensions = { "lazy", "neo-tree" },
-        options = {
-          theme = "auto",
-          section_separators = { left = '', right = '' },
-          globalstatus = true,
-        },
-      })
     end
   },
 
@@ -77,4 +42,11 @@ return {
     },
   },
 
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    opts = {
+      -- add any custom options here
+    }
+  },
 }
