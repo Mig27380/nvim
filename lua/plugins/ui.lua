@@ -50,6 +50,16 @@ return {
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     }
+  },
+
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      vim.opt.termguicolors = true
+      require('bufferline').setup()
+    end
   }
 
 }

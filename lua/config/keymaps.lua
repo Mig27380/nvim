@@ -49,3 +49,9 @@ vim.keymap.set("n", "<leader>qq", ":qa<CR>")
 vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
 -- Terminal
 vim.keymap.set("n", "<C-/>", ":ToggleTerm<CR>")
+
+
+-- Bufferline
+vim.keymap.set("n", "H", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "L", "<Cmd>BufferLineCycleNext<CR>", { desc = "Previous buffer" })
+
