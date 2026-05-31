@@ -16,13 +16,18 @@ return {
             }
           },
         },
+        pyright = {},
+        ts_ls = {},
+        rust_analyzer = {},
+        clangd = {},
+        bashls = {},
+        cssls = {},
       },
     },
     config = function(_, opts)
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls" },
-        automatic_enable = true
+        ensure_installed = { "lua_ls", "pyright", "ts_ls", "rust_analyzer", "clangd", "bashls", "cssls" },
       })
 
       for server, config in pairs(opts.servers) do
@@ -32,50 +37,4 @@ return {
 
     end
   },
-  -- {
-  --   "nvim-java/nvim-java",
-  --   config = false,
-  --   dependencies = {
-  --     {
-  --       "neovim/nvim-lspconfig",
-  --       opts = {
-  --         servers = {
-  --           -- Your JDTLS configuration goes here
-  --           jdtls = {
-  --             -- settings = {
-  --             --   java = {
-  --             --     configuration = {
-  --             --       runtimes = {
-  --             --         {
-  --             --           name = "JavaSE-23",
-  --             --           path = "/usr/local/sdkman/candidates/java/23-tem",
-  --             --         },
-  --             --       },
-  --             --     },
-  --             --   },
-  --             -- },
-  --           },
-  --         },
-  --         setup = {
-  --           jdtls = function()
-  --             -- Your nvim-java configuration goes here
-  --             require("java").setup({
-  --               -- root_markers = {
-  --               --   "settings.gradle",
-  --               --   "settings.gradle.kts",
-  --               --   "pom.xml",
-  --               --   "build.gradle",
-  --               --   "mvnw",
-  --               --   "gradlew",
-  --               --   "build.gradle",
-  --               --   "build.gradle.kts",
-  --               -- },
-  --             })
-  --             require("lspconfig").jdtls.setup()
-  --           end,
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
 }
