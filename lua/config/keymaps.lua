@@ -5,8 +5,8 @@ vim.keymap.set("n", "<Up>", "<Nop>")
 vim.keymap.set("n", "<Right>", "<Nop>")
 
 -- Ctrl + Enter to insert line
-vim.keymap.set("n", "<C-CR>", "o<Esc>$")
-vim.keymap.set("n", "<A-CR>", "O<Esc>$")
+vim.keymap.set({"n", "i"}, "<C-CR>", "o<Esc>$")
+vim.keymap.set({"n", "i"}, "<A-CR>", "O<Esc>$")
 
 --- Adjust system clipboard behavior ---
 vim.keymap.set({"n", "v"}, "d", "\"_d")
@@ -27,10 +27,10 @@ vim.keymap.set("v", "<C-x>", "d")
 vim.keymap.set("v", "<C-p>", "p")
 
 -- Navigate around
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set({"n", "v", "x", "o"}, "<C-h>", "<C-w>h")
+vim.keymap.set({"n", "v", "x", "o"}, "<C-j>", "<C-w>j")
+vim.keymap.set({"n", "v", "x", "o"}, "<C-k>", "<C-w>k")
+vim.keymap.set({"n", "v", "x", "o"}, "<C-l>", "<C-w>l")
 
 vim.keymap.set({"i", "t"}, "<C-h>", "<C-\\><C-n><C-w>h")
 vim.keymap.set({"i", "t"}, "<C-j>", "<C-\\><C-n><C-w>j")
@@ -42,10 +42,10 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- Move lines up or down
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
-vim.keymap.set("n", "<A-J>", ":m .+1<CR>==")
-vim.keymap.set("n", "<A-K>", ":m .-2<CR>==")
+vim.keymap.set({"n", "i", "v", "x"}, "<A-j>", ":m .+1<CR>==")
+vim.keymap.set({"n", "i", "v", "x"}, "<A-k>", ":m .-2<CR>==")
+vim.keymap.set({"n", "i", "v", "x"}, "<A-J>", ":m .+1<CR>==")
+vim.keymap.set({"n", "i", "v", "x"}, "<A-K>", ":m .-2<CR>==")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -68,13 +68,13 @@ vim.keymap.set("n", "<leader>qq", "<cmd>qa<CR>")
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>")
 
 -- Terminal
-vim.keymap.set({"n", "t"}, "<C-/>", function() Snacks.terminal() end)
+vim.keymap.set({"n", "t", "i", "v", "x"}, "<C-/>", function() Snacks.terminal() end)
 
 -- Resize windows
-vim.keymap.set("n", "<A-S-->", "<cmd>resize -4<cr>")
-vim.keymap.set("n", "<A-S-=>", "<cmd>resize +4<cr>")
-vim.keymap.set("n", "<A-->", "<cmd>vertical resize -4<cr>")
-vim.keymap.set("n", "<A-=>", "<cmd>vertical resize +4<cr>")
+vim.keymap.set({"n", "i", "t"}, "<A-S-->", "<cmd>resize -4<cr>")
+vim.keymap.set({"n", "i", "t"}, "<A-S-=>", "<cmd>resize +4<cr>")
+vim.keymap.set({"n", "i", "t"}, "<A-->", "<cmd>vertical resize -4<cr>")
+vim.keymap.set({"n", "i", "t"}, "<A-=>", "<cmd>vertical resize +4<cr>")
 
 -- Bufferline
 vim.keymap.set("n", "H", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Next buffer" })
@@ -97,6 +97,14 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" }
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, { desc = "Diagnostic float" })
+
+-- Snacks Picker
+vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find files" })
+vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Live grep (find in project)" })
+vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
+vim.keymap.set("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent files" })
+vim.keymap.set("n", "<leader>fw", function() Snacks.picker.grep_word() end, { desc = "Search word under cursor" })
+vim.keymap.set("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Help tags" })
 
 -- Java (nvim-java)
 vim.keymap.set("n", "<leader>jr", function() require("java").runner.built_in.run_app({}) end, { desc = "Run Java app" })
